@@ -17,6 +17,10 @@ var titsFilter = ['white', 'black', 'big', 'small', 'hairy']
 var stream = T.stream('statuses/filter', {track : "filler"});
 stream.stop();
 
+app.get('/', function(req, res){
+  res.send('<h1>Hello world</h1>');
+});
+
 io.sockets.on('connection', function (socket) {
     socket.broadcast.emit('update', socket['id']);
     console.log('connected' + socket['id']);
