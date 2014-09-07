@@ -77,6 +77,7 @@ stream.on('tweet', function (tweet) {
 
     io.emit('update',{"keyword":keyword, "filter":filter});
     console.log('stream');
+    
 });
 
 http.listen(process.env.PORT || 3000, function(){
