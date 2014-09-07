@@ -52,11 +52,12 @@ def main():
         (r"/(.*)",tornado.web.StaticFileHandler, {"path": "./resources"}),
         (r'/', MainHandler),
         ])
-    http_server = tornado.httpserver.HTTPServer(application, ssl_options={
-        "certfile": "test.crt",
-        "keyfile": "test.key",
-    })
-    port = int(os.environ.get("PORT", 443))
+   # http_server = tornado.httpserver.HTTPServer(application, ssl_options={
+   #     "certfile": "test.crt",
+   #     "keyfile": "test.key",
+   #})
+    http_server = tornado.httpserver.HTTPServer(application)
+    port = int(os.environ.get("PORT", 9999))
     http_server.listen(port)
     tornado.ioloop.IOLoop.instance().start()
 
