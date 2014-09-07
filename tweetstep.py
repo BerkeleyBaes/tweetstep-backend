@@ -57,8 +57,7 @@ def main():
    #     "keyfile": "test.key",
    #})
     http_server = tornado.httpserver.HTTPServer(application)
-    port = int(os.environ.get("PORT", 9999))
-    http_server.listen(port)
+    http_server.listen(9999)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
