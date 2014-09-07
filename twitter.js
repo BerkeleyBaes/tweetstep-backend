@@ -3,6 +3,8 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var Twit = require('twit')
 
+http.listen(80);
+
 var T = new Twit({
     consumer_key:         'HEL8XE9rzMJOk5ZjZShSnFt3s'
   , consumer_secret:      'o16TD1T3QedgiKN3MrQaX3xMzRzFFqkorqicEBG4lmpw40qWw5'
