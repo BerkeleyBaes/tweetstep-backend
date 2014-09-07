@@ -22,7 +22,7 @@ app.get('/', function(req, res){
 });
 
 io.sockets.on('connection', function (socket) {
-    socket.broadcast.emit('update', socket['id']);
+    //socket.broadcast.emit('update', socket['id']);
     console.log('connected' + socket['id']);
 
     socket.on('happy', function (data) {
