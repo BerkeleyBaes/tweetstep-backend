@@ -9,10 +9,10 @@ var T = new Twit({
   , access_token:         '2347949490-DjgrORJsLhCMILo0Kv9CygVVyYFAzLjSZ6sVZ7d'
   , access_token_secret:  '0uhXKJrlY8H12WtmMH1CnXPdqCjnmRETWYIg9cZV4fDCI'
 })
-var moodFilter = ['happy', 'sad', 'angry', 'chill', 'swag']
-var assFilter = ['white', 'black', 'big', 'small', 'hairy']
-var dickFilter = ['white', 'black', 'big', 'small', 'hairy']
-var titsFilter = ['white', 'black', 'big', 'small', 'hairy']
+var happyFilter = ['happy', 'smile', 'laugh', 'win', 'joy']
+var sadFilter = ['sad', 'frown', 'death', 'pain', 'low']
+var angryFilter = ['angry', 'fight', 'hate', 'kill', 'punch']
+var chillFilter = ['chill', 'sleep', 'big', 'rest', 'calm']
 
 var stream = T.stream('statuses/filter', {track : "filler"});
 stream.stop();
@@ -25,25 +25,25 @@ io.sockets.on('connection', function (socket) {
     socket.broadcast.emit('update', socket['id']);
     console.log('connected' + socket['id']);
 
-    socket.on('moods', function (data) {
+    socket.on('happy', function (data) {
       stream.stop();
       stream.params.track = moodFilter;
       stream.start();
     });
 
-    socket.on('dicks', function (data) {
+    socket.on('sad', function (data) {
       stream.stop();
       stream.params.track = dickFilter;
       stream.start();
     });
 
-    socket.on('ass', function (data) {
+    socket.on('angry', function (data) {
       stream.stop();
       stream.params.track = assFilter;
       stream.start();
     });
 
-  socket.on('tits', function (data) {
+  socket.on('chill', function (data) {
       stream.stop();
       stream.params.track = titsFilter;
       stream.start();
