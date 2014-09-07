@@ -12,7 +12,7 @@ var T = new Twit({
 var happyFilter = ['happy', 'smile', 'laugh', 'win', 'joy']
 var sadFilter = ['sad', 'frown', 'death', 'pain', 'low']
 var angryFilter = ['angry', 'fight', 'hate', 'kill', 'punch']
-var chillFilter = ['chill', 'sleep', 'big', 'rest', 'calm']
+var chillFilter = ['chill', 'sleep', 'relax', 'rest', 'calm']
 
 var stream = T.stream('statuses/filter', {track : "filler"});
 
