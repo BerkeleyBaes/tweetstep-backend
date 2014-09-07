@@ -15,38 +15,42 @@ var angryFilter = ['angry', 'fight', 'hate', 'kill', 'punch']
 var chillFilter = ['chill', 'sleep', 'big', 'rest', 'calm']
 
 var stream = T.stream('statuses/filter', {track : "filler"});
-stream.stop();
 
 app.get('/', function(req, res){
   res.send('<h1>Hello world</h1>');
 });
 
 io.sockets.on('connection', function (socket) {
-    socket.broadcast.emit('update', socket['id']);
+    //socket.broadcast.emit('update', socket['id']);
+    stream.stop();
     console.log('connected' + socket['id']);
 
-    socket.on('happy', function (data) {
-      stream.stop();
-      stream.params.track = happyFilter;
-      stream.start();
+   	socket.on('happy', function (data) {
+   		console.log('happy')
+      	stream.stop();
+      	stream.params.track = happyFilter;
+      	stream.start();
     });
 
     socket.on('sad', function (data) {
-      stream.stop();
-      stream.params.track = sadFilter;
-      stream.start();
+   		console.log('sad')    	
+      	stream.stop();
+      	stream.params.track = sadFilter;
+      	stream.start();
     });
 
     socket.on('angry', function (data) {
-      stream.stop();
-      stream.params.track = angryFilter;
-      stream.start();
+   		console.log('angry')
+      	stream.stop();
+      	stream.params.track = angryFilter;
+      	stream.start();
     });
 
   socket.on('chill', function (data) {
-      stream.stop();
-      stream.params.track = chillFilter;
-      stream.start();
+   		console.log('chill')
+      	stream.stop();
+      	stream.params.track = chillFilter;
+      	stream.start();
     });
 
     socket.on('disconnect', function () {
