@@ -14,7 +14,8 @@ var assFilter = ['white', 'black', 'big', 'small', 'hairy']
 var dickFilter = ['white', 'black', 'big', 'small', 'hairy']
 var titsFilter = ['white', 'black', 'big', 'small', 'hairy']
 
-var stream = T.stream('statuses/filter', {track : titsFilter});
+var stream = T.stream('statuses/filter', {track : "filler"});
+stream.stop();
 
 io.sockets.on('connection', function (socket) {
     socket.broadcast.emit('update', socket['id']);
@@ -30,7 +31,19 @@ io.sockets.on('connection', function (socket) {
       stream.stop();
       stream.params.track = dickFilter;
       stream.start();
-  });
+    });
+
+    socket.on('ass', function (data) {
+      stream.stop();
+      stream.params.track = assFilter;
+      stream.start();
+    });
+
+  socket.on('tits', function (data) {
+      stream.stop();
+      stream.params.track = titsFilter;
+      stream.start();
+    });
 
     socket.on('disconnect', function () {
         socket.broadcast.emit('disappear', socket['id']);
