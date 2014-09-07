@@ -53,14 +53,10 @@ def main():
         (r"/(.*)",tornado.web.StaticFileHandler, {"path": "./resources"}),
         (r'/', MainHandler),
         ])
-    #http_server = tornado.httpserver.HTTPServer(application, ssl_options={
-     #   "certfile": "test.crt",
-      #  "keyfile": "test.key",
-    #})
+    
     http_server = tornado.httpserver.HTTPServer(application)
-    http_server.bind(8888)
-    http_server.start(0)
-    IOLoop.instance().start()
+    http_server.listen(80)
+    tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
     main()
