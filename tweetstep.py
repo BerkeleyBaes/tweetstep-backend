@@ -11,8 +11,7 @@ connections = set()
 
 class MainHandler(tornado.web.RequestHandler):
   def get(self):
-    loader = tornado.template.Loader(".")
-    self.write(loader.load("index.html").generate())
+    self.render('index.html')
  
 class TweetStepHandler(tornado.websocket.WebSocketHandler):
     def open(self):
@@ -50,15 +49,11 @@ class MyStreamer(TwythonStreamer):
 def main():
     application = tornado.web.Application([
         (r"/tweetstep", TweetStepHandler),
-        (r"/(.*)",tornado.web.StaticFileHandler, {"path": "./resources"}),
         (r'/', MainHandler),
         ])
-   # http_server = tornado.httpserver.HTTPServer(application, ssl_options={
-   #     "certfile": "test.crt",
-   #     "keyfile": "test.key",
-   #})
+    
     http_server = tornado.httpserver.HTTPServer(application)
-    http_server.listen(443)
+    http_server.listen(8080)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
