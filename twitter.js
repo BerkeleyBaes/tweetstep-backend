@@ -56,8 +56,18 @@ io.sockets.on('connection', function (socket) {
 });
 
 stream.on('tweet', function (tweet) {
-      io.emit('update',tweet);
-      console.log('stream');
+	var tweet_text = tweet['text'];
+	var keyword = '';
+	var filter = stream.params.track;
+
+	for (var i = filter.length - 1; i >= 0; i--) {
+		if (tweet_text.indexOf(filter[i]) > -1) {
+			keyword = filter[i];
+		};
+	};
+
+    io.emit('update',keyword);
+    console.log('stream');
 });
 
 http.listen(process.env.PORT || 3000, function(){
