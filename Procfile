@@ -1,1 +1,1 @@
-web: python tweetstep.py
+web: python3.4 tweetstep.py
