@@ -12,20 +12,16 @@ var T = new Twit({
 var stream = T.stream('statuses/filter', {track : 'happy'})
 
 io.on('connection', function (socket) {
-    socket.broadcast.emit('join', socket['id']);
-    console.log(socket['id'] + ' has connected!');
+    socket.broadcast.emit('update', socket['id']);
+    console.log('connected' + socket['id']);
 
-   stream.on('tweet', function (tweet) {
-      console.log(tweet)
-      socket.broadcast.emit('update', (socket['id'] + ':' + tweet));
-    })
-
-    socket.on('tweet', function (data) {
-        socket.broadcast.emit('update', (socket['id'] + ':' + data));
-    });
-     
     socket.on('disconnect', function () {
         socket.broadcast.emit('disappear', socket['id']);
         console.log(socket['id'] + ' has disconnected!');
     });
 });
+
+stream.on('tweet', function (tweet) {
+  io.emit('update',tweet)
+});
+
