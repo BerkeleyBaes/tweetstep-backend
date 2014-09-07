@@ -1,0 +1,11 @@
+{
+  "name": "tweetstep",
+  "version": "1.0.0",
+  "description": "tweetstep",
+  "main": "twitter.js",
+  "dependencies": {
+    "express": "^4.8.8",
+    "socket.io": "1.0.4",
+    "twit": "^1.1.18"
+  }
+}
