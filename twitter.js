@@ -15,19 +15,22 @@ var dickFilter = ['white', 'black', 'big', 'small', 'hairy']
 var titsFilter = ['white', 'black', 'big', 'small', 'hairy']
 
 var stream = T.stream('statuses/filter', {track : titsFilter});
-var stream1 = T.stream('statuses/filter', {track: moodFilter});
 
-io.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) {
     socket.broadcast.emit('update', socket['id']);
     console.log('connected' + socket['id']);
 
     socket.on('moods', function (data) {
       stream.stop();
+      stream.params.track = moodFilter;
+      stream.start();
     });
 
     socket.on('dicks', function (data) {
-      //stream = T.stream('statuses/filter', {track : dickFilter});
-    });
+      stream.stop();
+      stream.params.track = dickFilter;
+      stream.start();
+  });
 
     socket.on('disconnect', function () {
         socket.broadcast.emit('disappear', socket['id']);
@@ -36,12 +39,6 @@ io.on('connection', function (socket) {
 });
 
 stream.on('tweet', function (tweet) {
-  io.emit('update',tweet);
-  console.log('stream');
-});
-
-stream1.on('tweet', function (tweet) {
-  console.log("stream1");
-  io.emit('update',tweet);
-  //stream1.stop();
+      io.emit('update',tweet);
+      console.log('stream');
 });
