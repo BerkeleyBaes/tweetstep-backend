@@ -53,8 +53,8 @@ def main():
         (r'/', MainHandler),
         ])
     http_server = tornado.httpserver.HTTPServer(application, ssl_options={
-        "certfile": "tornado/test/test.crt",
-        "keyfile": "include tornado/test/test.key",
+        "certfile": "test.crt",
+        "keyfile": "test.key",
     })
     port = int(os.environ.get("PORT", 443))
     http_server.listen(port)
