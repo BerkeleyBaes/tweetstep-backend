@@ -53,6 +53,11 @@ io.sockets.on('connection', function (socket) {
       	stream.start();
     });
 
+	socket.on('stop', function() {
+		console.log('stop');
+		stream.stop();
+	});
+
     socket.on('disconnect', function () {
         socket.broadcast.emit('disappear', socket['id']);
         console.log(socket['id'] + ' has disconnected!');
