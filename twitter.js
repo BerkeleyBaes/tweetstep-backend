@@ -17,7 +17,7 @@ var chillFilter = ['chill', 'sleep', 'relax', 'rest', 'calm']
 var stream = T.stream('statuses/filter', {track : "filler"});
 
 app.get('/', function(req, res){
-  res.send('<h1>Hello world</h1>');
+  res.sendFile(__dirname + '/index.html');
 });
 
 io.sockets.on('connection', function (socket) {
@@ -33,7 +33,7 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('sad', function (data) {
-   		console.log('sad')    	
+   		console.log('sad')
       	stream.stop();
       	stream.params.track = sadFilter;
       	stream.start();

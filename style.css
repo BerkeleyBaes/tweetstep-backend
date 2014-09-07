@@ -1,0 +1,65 @@
+html {
+    position: relative;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    padding-top:0px;
+    background: url("background.jpg");
+    background-size: cover;
+    color: white;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    position:relative;
+    height:100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.block {
+  display:table;
+  width: 50%;
+  position: absolute;
+  height: 100%;
+}
+
+.block-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.app-icon {
+  height: 50%;
+  width: 50%;
+  background: url("appicon-clear.png");
+  margin-right: auto;
+  margin-left: auto;
+  background-size: cover;
+  background-position: center;
+}
+
+.title {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 40px;
+}
+
+.iphone {
+  height:600px;
+  width:auto;
+  background: url("iphone.png");
+  margin-right: auto;
+  margin-left: auto;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
