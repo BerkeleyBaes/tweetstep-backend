@@ -27,25 +27,25 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('happy', function (data) {
       stream.stop();
-      stream.params.track = moodFilter;
+      stream.params.track = happyFilter;
       stream.start();
     });
 
     socket.on('sad', function (data) {
       stream.stop();
-      stream.params.track = dickFilter;
+      stream.params.track = sadFilter;
       stream.start();
     });
 
     socket.on('angry', function (data) {
       stream.stop();
-      stream.params.track = assFilter;
+      stream.params.track = angryFilter;
       stream.start();
     });
 
   socket.on('chill', function (data) {
       stream.stop();
-      stream.params.track = titsFilter;
+      stream.params.track = chillFilter;
       stream.start();
     });
 
@@ -66,7 +66,7 @@ stream.on('tweet', function (tweet) {
 		};
 	};
 
-    io.emit('update',keyword);
+    io.emit('update',{"keyword":keyword, "filter":filter});
     console.log('stream');
 });
 
