@@ -4,10 +4,10 @@ var io = require('socket.io')(http);
 var Twit = require('twit')
 
 var T = new Twit({
-    consumer_key:         'HEL8XE9rzMJOk5ZjZShSnFt3s'
-  , consumer_secret:      'o16TD1T3QedgiKN3MrQaX3xMzRzFFqkorqicEBG4lmpw40qWw5'
-  , access_token:         '2347949490-DjgrORJsLhCMILo0Kv9CygVVyYFAzLjSZ6sVZ7d'
-  , access_token_secret:  '0uhXKJrlY8H12WtmMH1CnXPdqCjnmRETWYIg9cZV4fDCI'
+    consumer_key:         'API_KEY'
+  , consumer_secret:      'API_SECRET'
+  , access_token:         'ACCESS_TOKEN' 
+  , access_token_secret:  'ACCESS_TOKEN_SECRET'
 })
 var happyFilter = ['happy', 'smile', 'laugh', 'win', 'joy']
 var sadFilter = ['sad', 'frown', 'death', 'pain', 'low']
