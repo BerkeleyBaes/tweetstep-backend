@@ -1,7 +1,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var Twit = require('twit')
+var Twit = require('twit');
 
 var T = new Twit({
     consumer_key:         'HEL8XE9rzMJOk5ZjZShSnFt3s'
@@ -16,6 +16,7 @@ var chillFilter = ['chill', 'sleep', 'relax', 'rest', 'calm']
 
 var stream = T.stream('statuses/filter', {track : "filler"});
 
+app.use(app.static(__dirname + '/'));
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
