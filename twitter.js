@@ -1,9 +1,10 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var Twit = require('twit');
 var config = require('./config.json');
-var express = require('express');
+
 
 var T = new Twit({
     consumer_key:         config.consumer_key
