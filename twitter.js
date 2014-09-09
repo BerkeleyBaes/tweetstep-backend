@@ -2,12 +2,14 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var Twit = require('twit');
+var config = require('./config.json');
+var express = require('express');
 
 var T = new Twit({
-    consumer_key:         'API_KEY'
-  , consumer_secret:      'API_SECRET'
-  , access_token:         'ACCESS_TOKEN' 
-  , access_token_secret:  'ACCESS_TOKEN_SECRET'
+    consumer_key:         config.consumer_key
+  , consumer_secret:      config.consumer_secret
+  , access_token:         config.access_token
+  , access_token_secret:  config.access_token_secret
 })
 var happyFilter = ['happy', 'smile', 'laugh', 'win', 'joy']
 var sadFilter = ['sad', 'frown', 'death', 'pain', 'low']
@@ -16,7 +18,7 @@ var chillFilter = ['chill', 'sleep', 'relax', 'rest', 'calm']
 
 var stream = T.stream('statuses/filter', {track : "filler"});
 
-app.use(app.static(__dirname + '/'));
+app.use(express.static(__dirname + '/'));
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
@@ -78,7 +80,7 @@ stream.on('tweet', function (tweet) {
 
     io.emit('update',{"keyword":keyword, "filter":filter});
     console.log('stream');
-    
+
 });
 
 http.listen(process.env.PORT || 3000, function(){
