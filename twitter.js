@@ -5,7 +5,6 @@ var io = require('socket.io')(http);
 var Twit = require('twit');
 var config = require('./config.json');
 
-
 var T = new Twit({
     consumer_key:         config.consumer_key
   , consumer_secret:      config.consumer_secret
